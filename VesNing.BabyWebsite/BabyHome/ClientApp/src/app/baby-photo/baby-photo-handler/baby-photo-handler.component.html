@@ -1,0 +1,12 @@
+<div  style="padding:24px; background: #fff; min-height: 360px;">
+  <nz-upload [nzAction]="serverUrl" nzListType="picture-card" [(nzFileList)]="fileList"
+    [nzShowButton]="fileList.length < 13" [nzPreview]="handlePreview" >
+    <i nz-icon type="plus"></i>
+    <div class="ant-upload-text">Upload</div>
+  </nz-upload>
+  <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible=false">
+    <ng-template #modalContent>
+      <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
+    </ng-template>
+  </nz-modal>
+</div>

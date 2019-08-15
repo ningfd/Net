@@ -1,0 +1,40 @@
+<div style="padding:24px; background: #fff; min-height: 360px;">
+  <div nz-row [nzGutter]="6">
+    <div nz-col [nzSpan]="6" *ngFor="let item of data">
+      <nz-card [nzCover]="coverTemplate" [nzActions]="[actionPreview,actionDelete]">
+        <nz-card-meta [nzTitle]="item.title" [nzDescription]="item.description"></nz-card-meta>
+        <ng-template #coverTemplate>
+          <img alt="item.description" [src]="item.imageSrc" style="height:200px" />
+        </ng-template>
+      </nz-card>
+      <ng-template #actionPreview>
+        <button nz-button [type]='primary' (click)="showModal(item)">
+          <i nz-icon type="file-search"></i>
+        </button>
+      </ng-template>
+      <ng-template #actionDelete>
+        <i nz-icon type="delete"></i>
+      </ng-template>
+    </div>
+  </div>
+  <div style="float:right;">
+    <nz-affix [nzOffsetTop]="500">
+      <a [routerLink]="['/babyphotohandle']">
+        <i style="width:20px;height:20px" nz-icon [type]="'edit'" [theme]="'fill'"></i>
+      </a>
+    </nz-affix>
+  </div>
+  <div>
+    <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
+      (nzOnCancel)="previewVisible=false">
+      <ng-template #modalContent>
+        <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
+      </ng-template>
+    </nz-modal>
+  </div>
+
+</div>
+<div style="float:right;bottom: 2%;">
+  <nz-pagination [nzPageIndex]="1" [nzTotal]="pageCount" [nzPageSize]=12 (nzPageIndexChange)="pageIndexChanged($event)">
+  </nz-pagination>
+</div>

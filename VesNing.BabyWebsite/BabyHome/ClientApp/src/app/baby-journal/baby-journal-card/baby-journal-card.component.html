@@ -1,0 +1,30 @@
+<div style="margin-top:20px; padding:24px; background: #fff; min-height: 360px;">
+  <div *ngIf="showStyle==1">
+    <nz-card style="height: 100%;" [nzTitle]="journal.title" #card>
+    <p>{{journal.content}}</p>
+    </nz-card>
+  </div>
+  <div *ngIf="showStyle==2">
+    <form nz-form [formGroup]="cardForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+      <nz-form-control nzSpan="24">
+      <input id='title' type="text" nz-input formControlName='title' />
+      </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+      <nz-form-control nzSpan="24">
+      <textarea id='content' nz-input formControlName='content' style="height:60%"></textarea>
+      </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSpan]="12" [nzOffset]="22">
+          <button nz-button nzType="primary">提交</button>
+        </nz-form-control>
+      </nz-form-item>
+
+
+    </form>
+    <!--<textarea style="height: 100%;width: 100%"></textarea>-->
+  </div>
+</div>

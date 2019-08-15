@@ -1,0 +1,25 @@
+<nz-layout>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzWidth]="width" [nzReverseArrow]="isReverseArrow">
+    <!--<div class="logo"></div>-->
+    <ul style="margin-top: 10px;" nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+        <li nz-menu-item><a [routerLink]="['./journallist']">九宫格</a></li>
+        <li nz-menu-item>跑马灯</li>
+        <li nz-menu-item>时间轴</li>
+        <!--缩略图易用性不好，暂时不需要-->
+        <!--<li nz-menu-item><a [routerLink]="['./babyphotoalbum']">缩略图</a></li>-->
+    </ul>
+    </nz-sider>
+    <nz-layout>
+        <!--格式头：隐藏<nz-header style="background: #fff; padding:0;"></nz-header>-->
+        <nz-content style="margin:0 5px;">
+            <nz-breadcrumb style="margin:5px 0;">
+                <nz-breadcrumb-item>User</nz-breadcrumb-item>
+                <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+            </nz-breadcrumb>
+            <div style="padding:24px; background: #fff; min-height: 450px;">
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+        <nz-footer style="text-align: center;">Ant Design ©2019 Implement By Angular</nz-footer>
+    </nz-layout>
+</nz-layout>

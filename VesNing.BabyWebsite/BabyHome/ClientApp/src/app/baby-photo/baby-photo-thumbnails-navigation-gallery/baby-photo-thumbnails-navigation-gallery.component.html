@@ -1,0 +1,29 @@
+<div id="st_main" class="st_main">
+  <img [src]="bigImage" alt="" class="st_preview" style="display:none;" />
+  <div class="st_overlay"></div>
+  <h1>Mark Sebastion</h1>
+  <div id="st_loading" class="st_loading"><span>加载中...</span></div>
+  <ul id='st_nav' class="st_navigation">
+    <li class="album">
+      <span class="st_link">缩略图<span class="st_arrow_down"></span></span>
+      <div class="st_wrapper st_thumbs_wrapper">
+        <div class="st_thumbs">
+          <img *ngFor="let image of imageArray" [src]='image.imageSrc' style="width:140px;height:140px"/>
+        </div>
+      </div>
+    </li>
+    <li>
+      <span class="st_link">About<span class="st_arrow_down"></span></span>
+      <div class="st_about st_thumbs_wrapper">
+        <div class="st_subcontent">
+          <p>
+            I am alone, and feel the charm of existence in this spot,
+            which was created for the bliss of souls like mine. I am
+            so happy, my dear friend, so absorbed in the exquisite sense
+            of mere tranquil existence, that I neglect my talents.
+          </p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

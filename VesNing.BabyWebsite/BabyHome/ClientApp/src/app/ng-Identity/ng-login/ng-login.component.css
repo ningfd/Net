@@ -1,0 +1,30 @@
+
+.container {
+  background: url("/Image/loginBackGrond-1.jpg");
+  background-size: 100%;
+  height: 100%;
+}
+.main {
+  float: right;
+  margin-top: 15%;
+  margin-right: 20%;
+}
+.login-form {
+    max-width: 300px;
+  }
+
+  .login-form-forgot {
+    float: right;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
+  .ant-input
+  {
+    min-height: fit-content;
+  }
+  .ant-form-explain
+  {
+    color: red;
+  }
