@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<VesNing.Model.Blog.Article>
 @{
     ViewBag.Title = "Home Page";
+    L
 }
 @section AddToHead{
     <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
@@ -92,15 +93,7 @@
                             <h3> 欢迎来到个人技术博客技术博客 </h3>
                         </a>
                     </li>
-                    @foreach (var item in Model)
-                    {
-                        <li>
-                            <a href="content.html" target="_blank">
-                                <img src=@Url.Content("~/images/logo.jpg") alt="">
-                                <h3> @item.Content </h3>
-                            </a>
-                        </li>
-                    }
+                  
                     <li>
                         <a href="content.html" target="_blank">
                             <img src=@Url.Content("~/images/logo.jpg") alt="">
@@ -145,6 +138,20 @@
                             </div>
                         </div>
                     </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="news-list">
+                            <div class="news-img col-xs-5 col-sm-5 col-md-4"> <a target="_blank" href=""><img src=@Url.Content("~/images/img1.jpg") alt=""> </a> </div>
+                            <div class="news-info col-xs-7 col-sm-7 col-md-8">
+                                <dl>
+                                    <dt> <a href="" target="_blank"> @item.Caption </a> </dt>
+                                    <dd><span class="name"><a href="" title="由 个人技术博客 发布" rel="author">个人技术博客</a></span> <span class="identity"></span> <span class="time"> 2015-10-19 </span></dd>
+                                    <dd class="text"> @item.Content</dd>
+                                </dl>
+                                <div class="news_bot col-sm-7 col-md-8"> <span class="tags visible-lg visible-md"> <a href="">本站</a> <a href="">个人技术博客</a> </span> <span class="look"> 共 <strong>2126</strong> 人围观，发现 <strong> 12 </strong> 个不明物体 </span> </div>
+                            </div>
+                        </div>
+                    }
                     <div class="news-list">
                         <div class="news-img col-xs-5 col-sm-5 col-md-4"> <a target="_blank" href=""><img src=@Url.Content("~/images/img1.jpg") alt=""> </a> </div>
                         <div class="news-info col-xs-7 col-sm-7 col-md-8">
