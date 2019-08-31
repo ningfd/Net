@@ -3,7 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.89
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VesNing.EdutureCore", "VesNing.EdutureCore\VesNing.EdutureCore.csproj", "{393A450B-8265-42E1-83DB-B36797A37DF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VesNing.EdutureCore.Web", "VesNing.EdutureCore\VesNing.EdutureCore.Web.csproj", "{393A450B-8265-42E1-83DB-B36797A37DF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Infrastructure", "0-Infrastructure", "{5DF33DE5-5F57-4017-95AD-E3F0ECDB986A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Repositories", "1-Repositories", "{EF1AA975-1287-481E-9925-E17C0B2ABE15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Bussiness", "2-Bussiness", "{2E13AA6D-6B0E-4460-B015-F3386497907D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Application", "4-Application", "{A55B575C-4E81-4AC1-9A52-0171D3D76C7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Model", "3-Model", "{6B10E9E2-D222-4A55-970B-C3B2B7E96633}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-UI", "5-UI", "{10BC9E13-2249-4903-98FB-01F14C9B8017}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VesNing.EdutureCore.IRepositity", "VesNing.EdutureCore.IRepositity\VesNing.EdutureCore.IRepositity.csproj", "{08A9CE58-6E09-48A6-A8F7-29D5F907650F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VesNing.EdutureCore.MiniORM", "VesNing.EdutureCore.MiniORM\VesNing.EdutureCore.MiniORM.csproj", "{398B0685-1B9F-438C-B43B-EA5B6894E638}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VesNing.EdutureCore.Util", "VesNing.EdutureCore.Util\VesNing.EdutureCore.Util.csproj", "{CFFC14B7-859F-4A5A-8DCA-E6704EF0CF9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6-Test", "6-Test", "{A2021679-D636-4DD1-8F41-D52E663383A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VesNing.EdutureCore.Test", "VesNing.EdutureCore.Test\VesNing.EdutureCore.Test.csproj", "{778890A2-82FD-4ADC-9046-0DFD10CCE764}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +37,32 @@ Global
 		{393A450B-8265-42E1-83DB-B36797A37DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{393A450B-8265-42E1-83DB-B36797A37DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{393A450B-8265-42E1-83DB-B36797A37DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08A9CE58-6E09-48A6-A8F7-29D5F907650F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A9CE58-6E09-48A6-A8F7-29D5F907650F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A9CE58-6E09-48A6-A8F7-29D5F907650F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A9CE58-6E09-48A6-A8F7-29D5F907650F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398B0685-1B9F-438C-B43B-EA5B6894E638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398B0685-1B9F-438C-B43B-EA5B6894E638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398B0685-1B9F-438C-B43B-EA5B6894E638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398B0685-1B9F-438C-B43B-EA5B6894E638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFFC14B7-859F-4A5A-8DCA-E6704EF0CF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFC14B7-859F-4A5A-8DCA-E6704EF0CF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFC14B7-859F-4A5A-8DCA-E6704EF0CF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFC14B7-859F-4A5A-8DCA-E6704EF0CF9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{778890A2-82FD-4ADC-9046-0DFD10CCE764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{778890A2-82FD-4ADC-9046-0DFD10CCE764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{778890A2-82FD-4ADC-9046-0DFD10CCE764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{778890A2-82FD-4ADC-9046-0DFD10CCE764}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{393A450B-8265-42E1-83DB-B36797A37DF3} = {10BC9E13-2249-4903-98FB-01F14C9B8017}
+		{08A9CE58-6E09-48A6-A8F7-29D5F907650F} = {EF1AA975-1287-481E-9925-E17C0B2ABE15}
+		{398B0685-1B9F-438C-B43B-EA5B6894E638} = {EF1AA975-1287-481E-9925-E17C0B2ABE15}
+		{CFFC14B7-859F-4A5A-8DCA-E6704EF0CF9D} = {5DF33DE5-5F57-4017-95AD-E3F0ECDB986A}
+		{778890A2-82FD-4ADC-9046-0DFD10CCE764} = {A2021679-D636-4DD1-8F41-D52E663383A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2A1273B8-FE63-41C3-82EB-E831A6878F9A}
