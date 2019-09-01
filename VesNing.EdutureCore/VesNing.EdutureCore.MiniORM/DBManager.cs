@@ -10,7 +10,7 @@ namespace VesNing.EdutureCore.MiniORM
     /// <summary>
     /// 数据库的操作
     /// </summary>
-    class DBManager
+    public class DBManager
     {
         #region 连接字符串
         public string ConnectionString

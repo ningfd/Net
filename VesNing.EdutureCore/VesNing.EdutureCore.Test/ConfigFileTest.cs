@@ -5,7 +5,7 @@ namespace VesNing.EdutureCore.Test
 {
     class ConfigFileTest
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             JsonConifgUtil util =JsonConifgUtil.Currnet;
            string result=util.AddFile("system","appsettings.json").
