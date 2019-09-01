@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -20,7 +21,7 @@ namespace VesNing.EdutureCore.MiniORM
         private string connectionString;
         private static string tableName = string.Empty;
         private static IDictionary<PropertyInfo, string> 
-            filedColumnDict = new Dictionary<PropertyInfo, string>();
+            propertyClmDict = new Dictionary<PropertyInfo, string>();
         #endregion
 
         #region 构造函数
@@ -52,20 +53,38 @@ namespace VesNing.EdutureCore.MiniORM
                 {
                     continue;
                 }
-                if (!filedColumnDict.Keys.Contains(propertyInfo))
+                if (!propertyClmDict.Keys.Contains(propertyInfo))
                 {
-                    filedColumnDict.Add(propertyInfo, item.ColumnName);
+                    propertyClmDict.Add(propertyInfo, item.ColumnName);
                   
                 }
             }
             type.GetProperties().
-                Where(info => !filedColumnDict.Keys.Contains(info)).
+                Where(info => !propertyClmDict.Keys.Contains(info)).
                 ToList<PropertyInfo>().
                 ForEach(u =>
                 {
-                    if (!filedColumnDict.Keys.Contains(u))
+                    if (!propertyClmDict.Keys.Contains(u))
                     {
-                        filedColumnDict.Add(u, u.Name);
+                        propertyClmDict.Add(u, u.Name);
+                    }
+                });
+        }
+        public static void InitDbFildInfo<TEntity>() where TEntity : class
+        {
+            Type type = typeof(TEntity);
+            if (tableName.Length == 0)
+            {
+                tableName = type.Name;
+            }
+            type.GetProperties().
+                Where(info => !propertyClmDict.Keys.Contains(info)).
+                ToList<PropertyInfo>().
+                ForEach(u =>
+                {
+                    if (!propertyClmDict.Keys.Contains(u))
+                    {
+                        propertyClmDict.Add(u, u.Name);
                     }
                 });
         }
@@ -77,9 +96,9 @@ namespace VesNing.EdutureCore.MiniORM
             string sql = "insert into {0}({1}) values({2})";
             List<string> clmBuilder = new List<string>();
             List<object> values = new List<object>();
-            foreach (PropertyInfo info in filedColumnDict.Keys)
+            foreach (PropertyInfo info in propertyClmDict.Keys)
             {
-                clmBuilder.Add(string.Format(" {0} ", filedColumnDict[info]));
+                clmBuilder.Add(string.Format(" {0} ", propertyClmDict[info]));
                 if (info.PropertyType == typeof(string) || info.PropertyType == typeof(DateTime))
                 {
 
@@ -92,6 +111,7 @@ namespace VesNing.EdutureCore.MiniORM
             }
             sql = string.Format(sql, tableName, string.Join(",", clmBuilder), string.Join(",", values));
             Console.WriteLine(sql);
+            this.ExecSql(sql);
         }
         #endregion
 
@@ -104,6 +124,20 @@ namespace VesNing.EdutureCore.MiniORM
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
+        }
+        #endregion
+
+        #region 数据访问
+        public int ExecSql(string execSql)
+        {
+            int result = 0;
+            using (SqlConnection sqlConnection=new SqlConnection(this.connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(execSql, sqlConnection);
+                sqlConnection.Open();
+                result= cmd.ExecuteNonQuery();
+            }
+            return result;
         }
         #endregion
     }

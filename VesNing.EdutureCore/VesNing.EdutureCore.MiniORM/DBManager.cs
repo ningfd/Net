@@ -29,9 +29,20 @@ namespace VesNing.EdutureCore.MiniORM
         }
         #endregion
 
-        public virtual void OnModelBuilder<T>(EntityMappingInfo<T> mapInfo)where T:class
+        #region 公共方法
+        public void Set<T>() where T:class
+        {
+            DbEntity<T>.InitDbFildInfo<T>();
+        }
+        public void Set<T>(EntityMappingInfo<T> mapInfo) where T:class
         {
             DbEntity<T>.InitDbFildInfo<T>(mapInfo);
+        }
+        #endregion
+
+        public virtual void OnModelBuilder<T>(EntityMappingInfo<T> mapInfo)where T:class
+        {
+            this.Set<T>(mapInfo);
         }
 
         #region 获取实体类
