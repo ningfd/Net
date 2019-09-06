@@ -115,6 +115,15 @@ namespace VesNing.EdutureCore.MiniORM
         }
         #endregion
 
+        #region Query
+        public string Query(Expression<Func<T,bool>> condition)
+        {
+            AnalysicExpression analysic =new  AnalysicExpression();
+            analysic.Visit(condition);
+            return analysic.Sql();
+        }
+        #endregion
+
         #region 可枚举
         public IEnumerator<T> GetEnumerator()
         {

@@ -75,50 +75,50 @@ namespace VesNing.EdutureCore.MiniORM
     }
     public class EntityFiledMappingInfo<T>
     {
-        private string entityFiledName;
-        private string columnName;
+        private string _entityFiledName;
+        private string _columnName;
 
         public string EntityFiledName
         {
-            get { return this.entityFiledName; }
+            get { return this._entityFiledName; }
         }
         public string ColumnName
         {
-            get { return this.columnName; }
+            get { return this._columnName; }
         }
 
-        public EntityFiledMappingInfo<T> GetEntityFiled(Expression<Func<T, int>> entityFiled)
+        public EntityFiledMappingInfo<T> GetEntityProperty(Expression<Func<T, int>> entityFiled)
         {
-            return GetEntityFiled(entityFiled.ToString());
+            return GetEntityProperty(entityFiled.ToString());
         }
-        public EntityFiledMappingInfo<T> GetEntityFiled(Expression<Func<T, string>> entityFiled)
+        public EntityFiledMappingInfo<T> GetEntityProperty(Expression<Func<T, string>> entityFiled)
         {
-            return GetEntityFiled(entityFiled.ToString());
+            return GetEntityProperty(entityFiled.ToString());
         }
-        public EntityFiledMappingInfo<T> GetEntityFiled(Expression<Func<T, DateTime>> entityFiled)
+        public EntityFiledMappingInfo<T> GetEntityProperty(Expression<Func<T, DateTime>> entityFiled)
         {
-            return GetEntityFiled(entityFiled.ToString());
+            return GetEntityProperty(entityFiled.ToString());
         }
-        public EntityFiledMappingInfo<T> GetEntityFiled(Expression<Func<T, decimal>> entityFiled)
+        public EntityFiledMappingInfo<T> GetEntityProperty(Expression<Func<T, decimal>> entityFiled)
         {
-            return GetEntityFiled(entityFiled.ToString());
+            return GetEntityProperty(entityFiled.ToString());
         }
-        private EntityFiledMappingInfo<T> GetEntityFiled(string expressionString)
+        private EntityFiledMappingInfo<T> GetEntityProperty(string expressionString)
         {
             if (!expressionString.Contains('.'))
             {
                 return this;
             }
-            this.entityFiledName = expressionString.Split(".")[1];
+            this._entityFiledName = expressionString.Split(".")[1];
             return this;
         }
         public void ToCloumn(string coloumnName)
         {
-            if (this.entityFiledName.Length==0)
+            if (this._entityFiledName.Length==0)
             {
                 return;
             }
-            this.columnName = coloumnName;
+            this._columnName = coloumnName;
         }
     }
 
