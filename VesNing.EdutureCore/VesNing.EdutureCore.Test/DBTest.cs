@@ -48,8 +48,24 @@ namespace VesNing.EdutureCore.Test
             //manager.Entity<User>().Insert(use);
             //manager.Entity<Menu>().Insert(menu);
 
-           string sql=manager.Entity<User>().Query(u=>u.Uid==10&&u.UName=="张三");
-            Console.WriteLine(sql);
+            //string sql=manager.Entity<User>().Query(u=>u.Uid==10&&u.UName=="张三");
+            // Console.WriteLine(sql);
+
+            manager.Set<UserInfo>();
+            //manager.Entity<UserInfo>().Insert(new UserInfo
+            //{
+            //    UId = Guid.NewGuid().ToString(),
+            //    UName="宁凡栋",
+            //    UAccount="003185"
+            //});
+            //manager.Entity<UserInfo>().Insert(new UserInfo
+            //{
+            //    UId = Guid.NewGuid().ToString(),
+            //    UName = "宁俊哲",
+            //    UAccount = "003186"
+            //});
+            string sql=manager.Entity<UserInfo>().Query(u=>u.UName=="宁凡栋"||u.UName=="宁俊哲");
+             Console.WriteLine(sql);
             Console.Read();
 
         }

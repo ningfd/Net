@@ -30,12 +30,23 @@ namespace VesNing.EdutureCore.MiniORM
             {
                 builder.Append(" AND  ");
             }
+            else if (node.NodeType==ExpressionType.OrElse)
+            {
+                builder.Append(" Or  ");
+            }
             this.Visit(node.Right);
             return node;
         }
         protected override Expression VisitConstant(ConstantExpression node)
         {
-            builder.AppendFormat(" {0} ",node.Value);
+            if (node.Type.IsValueType)
+            {
+                builder.AppendFormat(" {0} ", node.Value);
+            }else
+            {
+                builder.AppendFormat(" '{0}' ", node.Value);
+            }
+          
             return base.VisitConstant(node);
         }
 

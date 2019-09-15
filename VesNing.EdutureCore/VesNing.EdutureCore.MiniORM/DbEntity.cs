@@ -99,14 +99,28 @@ namespace VesNing.EdutureCore.MiniORM
             foreach (PropertyInfo info in propertyClmDict.Keys)
             {
                 clmBuilder.Add(string.Format(" {0} ", propertyClmDict[info]));
+                object val = info.GetValue(t);
+                if (val == null)
+                {
+                    if (info.PropertyType.IsValueType)
+                    {
+                        values.Add(0);
+                    }
+                    else
+                    {
+                        values.Add("''");
+                    }
+
+                }
+                else
                 if (info.PropertyType == typeof(string) || info.PropertyType == typeof(DateTime))
                 {
 
-                    values.Add("'" + info.GetValue(t) + "'");
+                    values.Add("'" + val + "'");
                 }
                 else
                 {
-                    values.Add(info.GetValue(t));
+                    values.Add(val);
                 }
             }
             sql = string.Format(sql, tableName, string.Join(",", clmBuilder), string.Join(",", values));
@@ -128,6 +142,7 @@ namespace VesNing.EdutureCore.MiniORM
                 SqlCommand cmd = new SqlCommand(querySql, sqlConnection);
                 sqlConnection.Open();
                 SqlDataReader dataReader = cmd.ExecuteReader();
+                
             }
             return querySql;
            
