@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using VesNing.EdutureCore.MiniORM;
 using System.Linq;
+using VesNing.EdutureCore.Util;
 
 namespace VesNing.EdutureCore.Test
 {
@@ -25,7 +26,11 @@ namespace VesNing.EdutureCore.Test
             Console.WriteLine(entityMappingInfo1.ToString());
 
             Console.WriteLine("**********************************************************");
-            DBManager manager = new DBManager("");
+           string connectionSql= JsonConifgUtil.Currnet.AddFile("system", "appsettings.json").
+                ReadConfig("system").
+                GetValue("ConnectionSql");
+
+            DBManager manager = new DBManager(connectionSql);
             manager.OnModelBuilder<User>(entityMappingInfo);
             manager.OnModelBuilder<Menu>(entityMappingInfo1);
             User use = new User()

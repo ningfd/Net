@@ -118,9 +118,19 @@ namespace VesNing.EdutureCore.MiniORM
         #region Query
         public string Query(Expression<Func<T,bool>> condition)
         {
-            AnalysicExpression analysic =new  AnalysicExpression();
+            string querySql = "select {0} from {1}";
+            querySql = string.Format(querySql, string.Join(",", propertyClmDict.Values),tableName) ;
+            AnalysicExpression analysic = new AnalysicExpression();
             analysic.Visit(condition);
-            return analysic.Sql();
+            querySql = querySql + " where "+ analysic.Sql();
+            using (SqlConnection sqlConnection = new SqlConnection(this.connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(querySql, sqlConnection);
+                sqlConnection.Open();
+                SqlDataReader dataReader = cmd.ExecuteReader();
+            }
+            return querySql;
+           
         }
         #endregion
 
