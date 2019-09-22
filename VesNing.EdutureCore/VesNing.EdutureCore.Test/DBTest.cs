@@ -64,8 +64,11 @@ namespace VesNing.EdutureCore.Test
             //    UName = "宁俊哲",
             //    UAccount = "003186"
             //});
-            string sql=manager.Entity<UserInfo>().Query(u=>u.UName=="宁凡栋"||u.UName=="宁俊哲");
-             Console.WriteLine(sql);
+            List<UserInfo> users=manager.Entity<UserInfo>().Query(u=>u.UName=="宁凡栋"||u.UName=="宁俊哲");
+            users.ForEach(user=> 
+            {
+                Console.WriteLine(user.ToString()+"==============>"+user.UId);
+            });
             Console.Read();
 
         }

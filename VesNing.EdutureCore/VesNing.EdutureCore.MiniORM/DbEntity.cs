@@ -130,8 +130,9 @@ namespace VesNing.EdutureCore.MiniORM
         #endregion
 
         #region Query
-        public string Query(Expression<Func<T,bool>> condition)
+        public List<T> Query(Expression<Func<T,bool>> condition)
         {
+            List<T> retsult = new List<T>();
             string querySql = "select {0} from {1}";
             querySql = string.Format(querySql, string.Join(",", propertyClmDict.Values),tableName) ;
             AnalysicExpression analysic = new AnalysicExpression();
@@ -142,9 +143,21 @@ namespace VesNing.EdutureCore.MiniORM
                 SqlCommand cmd = new SqlCommand(querySql, sqlConnection);
                 sqlConnection.Open();
                 SqlDataReader dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    Type type = typeof(T);
+                    object instace= Activator.CreateInstance(type);
+                    foreach (var  propertyInfo in propertyClmDict.Keys)
+                    {
+                        type.GetProperty(propertyInfo.Name).
+                            SetValue(instace,dataReader[propertyClmDict[propertyInfo]]); ;
+                    }
+                    retsult.Add((T)instace);
+                }
                 
             }
-            return querySql;
+            Console.WriteLine(querySql);
+            return retsult;
            
         }
         #endregion
