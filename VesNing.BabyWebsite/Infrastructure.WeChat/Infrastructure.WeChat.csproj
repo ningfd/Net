@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Senparc.Weixin.MP" Version="16.6.15" />
     <PackageReference Include="Senparc.Weixin.MP.MVC" Version="7.2.7.2" />
     <PackageReference Include="Senparc.Weixin.MP.MvcExtension" Version="4.1.1" />
